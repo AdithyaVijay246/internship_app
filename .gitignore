@@ -1,0 +1,10 @@
+# Sensitive Info
+php/config.php
+
+# Large Folders
+vendor/
+node_modules/
+
+# Windows junk
+Thumbs.db
+.vscode/
