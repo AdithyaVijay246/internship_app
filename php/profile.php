@@ -22,7 +22,7 @@ if (!$userId) {
     exit;
 }
 
-// IF METHOD IS POST: Update the data (You already have this)
+// IF METHOD IS POST: Update the data 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $collection->updateOne(
         ['user_id' => (int)$userId],

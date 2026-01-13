@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#registrationForm").on("submit", function (e) {
-        // STRICT RULE: Prevent standard form submission
+        //  Prevent standard form submission
         e.preventDefault();
 
         // Get form data
@@ -26,7 +26,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status === "success") {
                     $("#responseMessage").html('<div class="alert alert-success">' + response.message + '</div>');
-                    // Optional: Clear form or redirect to login
+                    // Clear form or redirect to login
                     $("#registrationForm")[0].reset();
                     setTimeout(function() {
                         window.location.href = "login.html";

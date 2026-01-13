@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#loginForm").on("submit", function (e) {
-        e.preventDefault(); // Strictly no form submission [cite: 9]
+        e.preventDefault(); 
 
         $.ajax({
             type: "POST",
@@ -11,7 +11,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.status === "success") {
-                    // Maintain session using browser localstorage [cite: 13]
+
                     localStorage.setItem("authToken", response.token);
                     window.location.href = "profile.html";
                 } else {

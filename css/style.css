@@ -1,6 +1,5 @@
-/* --- Modern Glassmorphism Theme --- */
 body {
-    /* Soft premium gradient background */
+    
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
@@ -10,7 +9,6 @@ body {
     margin: 0;
 }
 
-/* --- Card Enhancements --- */
 .card.shadow {
     border: none !important;
     border-radius: 20px !important;
@@ -20,7 +18,6 @@ body {
     overflow: hidden;
 }
 
-/* --- Dynamic Header Styling --- */
 .card-header {
     padding: 25px !important;
     border-bottom: none !important;
@@ -33,12 +30,10 @@ body {
     text-transform: uppercase;
 }
 
-/* Matching your specific header colors */
 .bg-success { background: linear-gradient(to right, #27ae60, #2ecc71) !important; }
 .bg-primary { background: linear-gradient(to right, #4834d4, #686de0) !important; }
 .bg-dark    { background: linear-gradient(to right, #2d3436, #636e72) !important; }
 
-/* --- Form & Input Styling --- */
 .card-body {
     padding: 40px !important;
 }
@@ -65,7 +60,6 @@ body {
     box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1) !important;
 }
 
-/* --- Professional Button Styling --- */
 .btn {
     padding: 14px !important;
     border-radius: 12px !important;
@@ -76,7 +70,6 @@ body {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-/* Hover effect without "bobbing" (no transform: translateY) */
 .btn:hover {
     filter: brightness(1.1);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -86,14 +79,12 @@ body {
     transform: scale(0.98);
 }
 
-/* --- Feedback Messages --- */
 #loginResponse, #profileMsg, #responseMessage {
     font-weight: 600;
     border-radius: 10px;
     text-align: center;
 }
 
-/* --- Links --- */
 a {
     color: #667eea;
     text-decoration: none;
@@ -106,7 +97,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* --- Layout Adjustments for Profile --- */
 .container.mt-5 {
     margin-top: 2rem !important;
     margin-bottom: 2rem !important;
