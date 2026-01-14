@@ -39,3 +39,9 @@ EXPOSE 80
 
 # 10. Start Apache in the foreground
 CMD ["apache2ctl", "-D", "FOREGROUND"]
+
+# Copy all files (including the new .htaccess)
+COPY . /var/www/html/
+
+# Enable Apache's rewrite module (often needed for .htaccess to work)
+RUN a2enmod rewrite
