@@ -1,5 +1,4 @@
-mysql_data/
-vendor/
-.git/
-.env
-docker-compose.yml
+mongo_data
+mysql_data
+vendor
+.git
