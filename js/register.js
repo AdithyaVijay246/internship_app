@@ -1,42 +1,37 @@
 $(document).ready(function () {
     $("#registrationForm").on("submit", function (e) {
-        //  Prevent standard form submission
-        e.preventDefault();
+        e.preventDefault(); // Stop the page from refreshing
 
-        // Get form data
-        var username = $("#username").val();
-        var password = $("#password").val();
-        var confirmPassword = $("#confirmPassword").val();
+        // Basic validation: Check if passwords match
+        const password = $("#password").val();
+        const confirmPassword = $("#confirmPassword").val();
 
-        // Basic client-side validation
         if (password !== confirmPassword) {
             $("#responseMessage").html('<div class="alert alert-danger">Passwords do not match!</div>');
             return;
         }
 
-        // Send data using Jquery AJAX
+        // Show a loading message
+        $("#responseMessage").html('<div class="alert alert-info">Processing...</div>');
+
+        // The AJAX call
         $.ajax({
             type: "POST",
-            url: "php/register.php",
-            data: {
-                username: username,
-                password: password
-            },
-            dataType: "json", // Expecting JSON response from PHP
+            url: "php/register.php", // Crucial: Points to the subfolder
+            data: $(this).serialize(), // Automatically packages form inputs
             success: function (response) {
-                if (response.status === "success") {
-                    $("#responseMessage").html('<div class="alert alert-success">' + response.message + '</div>');
-                    // Clear form or redirect to login
-                    $("#registrationForm")[0].reset();
-                    setTimeout(function() {
-                        window.location.href = "login.html";
-                    }, 2000);
-                } else {
-                    $("#responseMessage").html('<div class="alert alert-danger">' + response.message + '</div>');
+                // Assuming your PHP returns a success string or JSON
+                $("#responseMessage").html('<div class="alert alert-success">' + response + '</div>');
+                
+                // Optional: Redirect to login after 2 seconds on success
+                if (response.includes("successfully")) {
+                    setTimeout(() => { window.location.href = "login.html"; }, 2000);
                 }
             },
-            error: function () {
-                $("#responseMessage").html('<div class="alert alert-danger">An error occurred. Please try again.</div>');
+            error: function (xhr, status, error) {
+                // Handle server errors (like 500 or 404)
+                $("#responseMessage").html('<div class="alert alert-danger">Error: Could not connect to server. Check AWS EC2 firewall.</div>');
+                console.error("Status: " + status + ", Error: " + error);
             }
         });
     });
