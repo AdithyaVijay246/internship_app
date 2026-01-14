@@ -1,11 +1,24 @@
 <?php
 header('Content-Type: application/json');
+require_once 'config.php'; // Load $redis_host and $redis_port
+
 $redis = new Redis();
-$redis->connect('127.0.0.1', 6379);
+
+try {
+    // Connect using the service name 'redis' from your config
+    $redis->connect($redis_host, $redis_port);
+} catch (Exception $e) {
+    echo json_encode(["status" => "error", "message" => "Could not connect to Redis"]);
+    exit;
+}
 
 $token = $_POST['token'] ?? '';
-// Delete the specific session key from Redis
-$redis->del("session:$token");
 
-echo json_encode(["status" => "success"]);
+if ($token) {
+    // Delete the specific session key from Redis
+    $redis->del("session:$token");
+    echo json_encode(["status" => "success", "message" => "Logged out successfully"]);
+} else {
+    echo json_encode(["status" => "error", "message" => "No token provided"]);
+}
 ?>

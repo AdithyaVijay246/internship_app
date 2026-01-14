@@ -1,19 +1,16 @@
 <?php
-// Database Configuration Template
-// Rename this file to config.php and enter your local credentials
-// MySQL
-$host = "localhost";
-$db_user = "root";
-$db_pass = ""; 
-$db_name = "guvi_db";
+// PHP Configuration Template
+// For AWS/Heroku, set these in the Environment Variables console.
+// For Local Docker, these will default to your service names.
 
-// Redis
-$redis_host = "127.0.0.1";
-$redis_port = 6379;
+$host = getenv('DB_HOST') ?: "db";
+$db_user = getenv('DB_USER') ?: "root";
+$db_pass = getenv('DB_PASS') ?: "rootpassword";
+$db_name = getenv('DB_NAME') ?: "guvi_db";
 
-// MongoDB
-$mongo_uri = "mongodb://localhost:27017";
-$mongo_db = "guvi_db";
+$redis_host = getenv('REDIS_HOST') ?: "redis";
+$redis_port = getenv('REDIS_PORT') ?: 6379;
+
+$mongo_uri = getenv('MONGO_URI') ?: "mongodb://mongodb:27017";
+$mongo_db = getenv('MONGO_DB') ?: "guvi_db";
 ?>
-
-
